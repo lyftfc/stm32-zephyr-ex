@@ -1,0 +1,6 @@
+board:
+  name: stm32f103c6_blue
+  full_name: STM32 Minimum Development Board (C6Tx Blue)
+  vendor: others
+  socs:
+    - name: stm32f103x6

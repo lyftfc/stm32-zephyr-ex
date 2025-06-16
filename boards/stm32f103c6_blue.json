@@ -1,0 +1,42 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m3",
+    "extra_flags": "-DSTM32F1 -DSTM32F103x6",
+    "f_cpu": "72000000L",
+    "mcu": "stm32f103c6t6",
+    "product_line": "STM32F103x6",
+    "variant": "STM32F1xx/F103C(4-6)T"
+  },
+  "debug": {
+    "default_tools": [
+      "stlink"
+    ],
+    "jlink_device": "STM32F103C6",
+    "openocd_target": "stm32f1x",
+    "svd_path": "STM32F103xx.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "mbed",
+    "libopencm3",
+    "stm32cube",
+    "zephyr"
+  ],
+  "name": "STM32F103C6 Blue Mini",
+  "upload": {
+    "maximum_ram_size": 10240,
+    "maximum_size": 32768,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "cmsis-dap",
+      "stlink",
+      "blackmagic",
+      "mbed"
+    ]
+  },
+  "url": "https://example.com",
+  "vendor": "Others"
+}
