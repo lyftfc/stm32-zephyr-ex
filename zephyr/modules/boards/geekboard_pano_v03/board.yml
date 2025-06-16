@@ -1,0 +1,6 @@
+board:
+  name: geekboard_pano_v03
+  full_name: GeekBoard Pano Ver 0.3
+  vendor: others
+  socs:
+    - name: stm32f103x8
