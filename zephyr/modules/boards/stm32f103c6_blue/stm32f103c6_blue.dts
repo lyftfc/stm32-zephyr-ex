@@ -28,6 +28,14 @@
 		};
 	};
 
+	soc {
+		swd {
+			pinctrl-0 = <&sys_jtms_swdio_pa13 &sys_jtck_swclk_pa14>;
+			pinctrl-names = "default";
+			status = "okay";
+		};
+	};
+
 	aliases {
 		led0 = &led;
 	};
@@ -105,5 +113,5 @@ zephyr_udc0: &usb {
 };
 
 &pinctrl {
-	swj-cfg = "full"; // "jtag-disable";
+	swj-cfg = "jtag-disable";
 };

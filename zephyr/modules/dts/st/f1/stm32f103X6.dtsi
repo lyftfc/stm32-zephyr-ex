@@ -10,6 +10,11 @@
 #include <mem.h>
 #include <st/f1/stm32f1.dtsi>
 
+/delete-node/ &usart3;
+/delete-node/ &timers4;
+/delete-node/ &i2c2;
+/delete-node/ &smbus2;
+
 / {
 	sram0: memory@20000000 {
 		reg = <0x20000000 DT_SIZE_K(10)>;
