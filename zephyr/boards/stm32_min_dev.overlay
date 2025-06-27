@@ -1,0 +1,65 @@
+
+// SPDX-License-Identifier: Apache-2.0
+
+#include <zephyr/dt-bindings/input/input-event-codes.h>
+
+/ {
+	soc {
+		swd {
+			pinctrl-0 = <&sys_jtms_swdio_pa13 &sys_jtck_swclk_pa14>;
+			pinctrl-names = "default";
+			status = "okay";
+		};
+	};
+	gpio_keys {
+		compatible = "gpio-keys";
+		user_button: button {
+			label = "user button";
+			gpios = <&gpiob 0 GPIO_ACTIVE_HIGH>;
+			status = "okay";
+			zephyr,code = <INPUT_KEY_0>;
+		};
+	};
+	leds {
+		ledext0: led_e0 {
+			gpios = <&gpioa 2 GPIO_ACTIVE_LOW>;
+			label = "External LD Yellow";
+		};
+	};
+	aliases {
+		led1 = &ledext0;
+		usrbtn = &user_button;
+	};
+	chosen {
+		zephyr,console = &cdc_acm_uart0;
+	};
+};
+
+&zephyr_udc0 {
+	cdc_acm_uart0: cdc_acm_uart0 {
+		compatible = "zephyr,cdc-acm-uart";
+	};
+};
+
+&flash0 {
+	partitions {
+		compatible = "fixed-partitions";
+        #address-cells = <1>;
+		#size-cells = <1>;
+
+		boot_partition: partition@8000000 {
+			label = "mcuboot";
+			reg = <0x8000000 DT_SIZE_K(16)>;
+		};
+
+		slot0_partition: partition@8004000 {
+			label = "image-0";
+			reg = <0x8004000 DT_SIZE_K(24)>;
+		};
+
+		slot1_partition: partition@800a000 {
+			label = "image-1";
+			reg = <0x800A000 DT_SIZE_K(24)>;
+		};
+	};
+};
