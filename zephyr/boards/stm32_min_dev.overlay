@@ -35,6 +35,14 @@
 	};
 };
 
+&timers2 {
+	st,prescaler = <7200>;
+	status = "okay";
+	counter2: counter {
+		status = "okay";
+	};
+};
+
 &zephyr_udc0 {
 	cdc_acm_uart0: cdc_acm_uart0 {
 		compatible = "zephyr,cdc-acm-uart";
@@ -61,5 +69,20 @@
 			label = "image-1";
 			reg = <0x800A000 DT_SIZE_K(24)>;
 		};
+	};
+};
+
+&pinctrl {
+	gpio_pin_c13 {
+		pinmux = <STM32F1_PINMUX('C', 13, GPIO_OUT, NO_REMAP)>;
+		bias-pull-up;
+		drive-open-drain;
+		slew-rate = "max-speed-2mhz";
+	};
+	gpio_pin_a2 {
+		pinmux = <STM32F1_PINMUX('A', 2, GPIO_OUT, NO_REMAP)>;
+		bias-pull-up;
+		drive-open-drain;
+		slew-rate = "max-speed-2mhz";
 	};
 };
